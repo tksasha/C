@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "sum.h"
+#include "swap.h"
 
 int main() {
   int a, b;
@@ -9,6 +10,10 @@ int main() {
   b = 3;
 
   printf("%d\n", sum(&a, &b));
+
+  swap(&a, &b);
+
+  printf("a = %d, b = %d\n", a, b);
 
   return 0;
 }
