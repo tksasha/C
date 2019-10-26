@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-#include "sum.h"
-#include "swap.h"
+#include "utils.h"
 
 int main() {
   int a, b;

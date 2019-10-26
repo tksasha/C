@@ -7,7 +7,7 @@ ARFLAGS =	-cvq
 SOURCES		=	src
 INCLUDES	=	include
 LIBRARIES	=	lib
-LFLAGS		=	-lsum -lswap
+LFLAGS		=	-lutils
 
 OUTPUT = bin/main
 
@@ -15,11 +15,8 @@ RM 			= rm
 RMFLAGS	= -rf
 
 all:
-	$(CC) $(CFLAGS) -c $(SOURCES)/sum.c -o $(SOURCES)/sum.o
-	$(AR) $(ARFLAGS) $(LIBRARIES)/libsum.a $(SOURCES)/sum.o
-
-	$(CC) $(CFLAGS) -c $(SOURCES)/swap.c -o $(SOURCES)/swap.o
-	$(AR) $(ARFLAGS) $(LIBRARIES)/libswap.a $(SOURCES)/swap.o
+	$(CC) $(CFLAGS) -c $(SOURCES)/utils.c -o $(SOURCES)/utils.o
+	$(AR) $(ARFLAGS) $(LIBRARIES)/libutils.a $(SOURCES)/utils.o
 
 	$(CC) -I$(INCLUDES) $(CFLAGS) $(SOURCES)/main.c -L$(LIBRARIES) $(LFLAGS) -o $(OUTPUT)
 
