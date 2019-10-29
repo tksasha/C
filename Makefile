@@ -1,28 +1,39 @@
-CC			=	clang
-CFLAGS	=	-Ofast -Wall
+CC = clang
+CFLAGS = -O0 -Wall
 
-AR 			= ar
-ARFLAGS =	-cvq
+INCLUDE = include
 
-SOURCES		=	src
-INCLUDES	=	include
-LIBRARIES	=	lib
-LFLAGS		=	-lutils
+MAIN = bin/main
+TEST = bin/test
 
-OUTPUT = bin/main
+MAINC = src/main.c
+TESTC = src/test.c
 
-RM 			= rm
-RMFLAGS	= -rf
+LFLAGS = -Llib -lutils
 
-all:
-	$(CC) $(CFLAGS) -c $(SOURCES)/utils.c -o $(SOURCES)/utils.o
-	$(AR) $(ARFLAGS) $(LIBRARIES)/libutils.a $(SOURCES)/utils.o
+UTILSC = src/utils.c
+UTILSO = lib/utils.o
+UTILSA = lib/libutils.a
 
-	$(CC) -I$(INCLUDES) $(CFLAGS) $(SOURCES)/main.c -L$(LIBRARIES) $(LFLAGS) -o $(OUTPUT)
+AR = ar
+ARFLAGS = -cvq
 
-	$(RM) $(RMFLAGS) $(SOURCES)/*.o
+RM = rm
+RMFLAGS = -f
 
-clear:
-	$(RM) $(RMFLAGS) $(SOURCES)/*.o
+all: libs
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(MAINC) $(LFLAGS) -o $(MAIN)
 
-	$(RM) $(OUTPUT)
+test:
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(TESTC) $(LFLAGS) -o $(TEST)
+	$(TEST)
+
+libs:
+	$(CC) $(CFLAGS) -c $(UTILSC) -o $(UTILSO)
+	$(AR) $(ARFLAGS) $(UTILSA) $(UTILSO)
+	$(RM) $(RMFLAGS) $(UTILSO)
+
+clean:
+	$(RM) $(RMFLAGS) $(MAINC)
+	$(RM) $(RMFLAGS) $(TESTC)
+	$(RM) $(RMFLAGS) $(UTILSA)

@@ -1,19 +1,9 @@
-int sum(int*, int*);
+#define COLOR_GREEN       "\33[0;32m"
+#define COLOR_BOLD_GREEN  "\33[1;32m"
 
-void swap(int*, int*);
+#define COLOR_RED       "\33[0;31m"
+#define COLOR_BOLD_RED  "\33[1;31m"
 
-unsigned long int max_ulint(unsigned long int*, unsigned long int*);
+#define COLOR_RESET "\33[0m"
 
-unsigned long int min_ulint(unsigned long int*, unsigned long int*);
-
-void char_downcase(char *);
-
-void string_downcase(char*);
-
-unsigned short max_char(char*, char*);
-
-unsigned short min_char(char*, char*);
-
-char* max_string(char*, char*);
-
-char* min_string(char*, char*);
+char max_char(char*, char*);
