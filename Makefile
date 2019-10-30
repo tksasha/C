@@ -21,7 +21,7 @@ ARFLAGS = -cvq
 RM = rm
 RMFLAGS = -f
 
-all: libs
+all:
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(MAINC) $(LFLAGS) -o $(MAIN)
 
 test:
