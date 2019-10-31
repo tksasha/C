@@ -28,6 +28,8 @@ RMFLAGS = -f
 all:
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(MAINC) $(UTILSL) -o $(MAIN)
 
+everything: libs all testlibs test
+
 libs:
 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(UTILSC) -o $(UTILSO)
 	$(AR) $(ARFLAGS) $(UTILSA) $(UTILSO)
@@ -43,6 +45,7 @@ testlibs:
 	$(RM) $(RMFLAGS) $(UTESTO)
 
 clean:
-	$(RM) $(RMFLAGS) $(MAINC)
-	$(RM) $(RMFLAGS) $(TESTC)
+	$(RM) $(RMFLAGS) $(MAIN)
+	$(RM) $(RMFLAGS) $(TEST)
 	$(RM) $(RMFLAGS) $(UTILSA)
+	$(RM) $(RMFLAGS) $(UTESTA)
