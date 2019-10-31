@@ -25,10 +25,10 @@ ARFLAGS = -cvq
 RM = rm
 RMFLAGS = -f
 
-all:
+main:
 	$(CC) $(CFLAGS) -I$(INCLUDE) $(MAINC) $(UTILSL) -o $(MAIN)
 
-everything: libs all testlibs test
+all: libs main testlibs test
 
 libs:
 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(UTILSC) -o $(UTILSO)
