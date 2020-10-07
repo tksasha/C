@@ -1,4 +1,9 @@
 bin/*
 lib/*
 
+src/main.c
+
 tmp/*
+
+.DS_Store
+

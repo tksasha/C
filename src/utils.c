@@ -1,7 +1,7 @@
-char max_char(char *a, char *b) {
-  if(*a > *b) {
-    return *a;
-  } else {
-    return *b;
-  }
+void swap(int *x, int *y) {
+  *x = *x + *y;
+
+  *y = *x - *y;
+
+  *x = *x - *y;
 }

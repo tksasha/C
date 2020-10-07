@@ -1,1 +1,1 @@
-char max_char(char*, char*);
+void swap(int*, int*);
