@@ -28,7 +28,7 @@ void sort(int *array, int size, short int mode) {
           swap(&array[i], &array[j]);
         }
       } else {
-        if(array[j] > array[i]) {
+        if(array[i] < array[j]) {
           swap(&array[i], &array[j]);
         }
       }
