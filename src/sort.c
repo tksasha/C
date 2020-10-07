@@ -5,10 +5,6 @@
 
 #define SIZE 10
 
-void sort_asc(int *array, long size);
-
-void sort_desc(int *array, long size);
-
 //
 // Sorting Example
 //
@@ -19,7 +15,7 @@ int main() {
     array[i] = rand() % 100;
   }
 
-  sort_asc(array, SIZE);
+  sort(array, SIZE, ASC);
 
   printf("ASC\n");
 
@@ -27,7 +23,7 @@ int main() {
     printf("%d\n", array[i]);
   }
 
-  sort_desc(array, SIZE);
+  sort(array, SIZE, DESC);
 
   printf("DESC\n");
 
@@ -36,24 +32,4 @@ int main() {
   }
 
   return 0;
-}
-
-void sort_asc(int *array, long size) {
-  for(int i = 0; i < size; i++) {
-    for(int j = 0; j < size; j++) {
-      if(array[j] > array[i]) {
-        swap(&array[i], &array[j]);
-      }
-    }
-  }
-}
-
-void sort_desc(int *array, long size) {
-  for(int i = 0; i < size; i++) {
-    for(int j = 0; j < size; j++) {
-      if(array[i] > array[j]) {
-        swap(&array[i], &array[j]);
-      }
-    }
-  }
 }

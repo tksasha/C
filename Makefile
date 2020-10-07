@@ -53,4 +53,5 @@ main:
 
 clean:
 	$(RM) $(RMFLAGS) $(MAIN)
+	$(RM) $(RMFLAGS) $(MAINC)
 	$(RM) $(RMFLAGS) $(UTILSA)
