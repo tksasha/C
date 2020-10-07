@@ -1,3 +1,3 @@
 void swap(int*, int*);
 
-int max(int*, long);
+int max(int *array, long size);
