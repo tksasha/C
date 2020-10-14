@@ -27,10 +27,10 @@ RMFLAGS = -f
 all: libs main
 
 libs:
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CARRAYS) 		-o $(OARRAYS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CINTEGERS) 	-o $(OINTEGERS)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CARRAYS)   -o $(OARRAYS)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CINTEGERS) -o $(OINTEGERS)
 
-	$(AR) $(ARFLAGS) $(AARRAYS) 	$(OARRAYS)
+	$(AR) $(ARFLAGS) $(AARRAYS)   $(OARRAYS)
 	$(AR) $(ARFLAGS) $(AINTEGERS) $(OINTEGERS)
 
 	$(RM) $(RMFLAGS) $(OARRAYS)
