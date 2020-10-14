@@ -1,9 +1,10 @@
-## How to build
+## How to build and run
 ```
 cd src
 ln -s FILE.c main.c
 cd ..
 make
+bin/main
 ```
 
 To cleanup
