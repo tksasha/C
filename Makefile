@@ -3,21 +3,20 @@ CFLAGS = -O0 -Wall
 
 INCLUDE = include
 
-MAIN = bin/main
-# TEST = bin/test
+FARRAYS = -larrays
+CARRAYS = src/arrays.c
+OARRAYS = src/arrays.o
+AARRAYS = lib/libarrays.a
+
+FINTEGERS = -lintegers
+CINTEGERS = src/integers.c
+OINTEGERS = src/integers.o
+AINTEGERS = lib/libintegers.a
+
+LIBS = -Llib $(FARRAYS) $(FINTEGERS)
 
 MAINC = src/main.c
-# TESTC = src/test.c
-
-UTILSC = src/utils.c
-UTILSO = lib/utils.o
-UTILSA = lib/libutils.a
-UTILSL = -Llib -lutils
-
-# UTESTC = src/utils/test.c
-# UTESTO = lib/utils/test.o
-# UTESTA = lib/utils/libtest.a
-# UTESTL = -Llib/utils -ltest
+MAIN 	= bin/main
 
 AR = ar
 ARFLAGS = -cvq
@@ -25,33 +24,24 @@ ARFLAGS = -cvq
 RM = rm
 RMFLAGS = -f
 
-# all: libs main testlibs test
 all: libs main
 
 libs:
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(UTILSC) -o $(UTILSO)
-	$(AR) $(ARFLAGS) $(UTILSA) $(UTILSO)
-	$(RM) $(RMFLAGS) $(UTILSO)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CARRAYS) 		-o $(OARRAYS)
+	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CINTEGERS) 	-o $(OINTEGERS)
+
+	$(AR) $(ARFLAGS) $(AARRAYS) 	$(OARRAYS)
+	$(AR) $(ARFLAGS) $(AINTEGERS) $(OINTEGERS)
+
+	$(RM) $(RMFLAGS) $(OARRAYS)
+	$(RM) $(RMFLAGS) $(OINTEGERS)
 
 main:
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(MAINC) $(UTILSL) -o $(MAIN)
-
-# test:
-# 	$(CC) $(CFLAGS) -I$(INCLUDE) $(TESTC) $(UTILSL) $(UTESTL) -o $(TEST)
-# 	$(TEST)
-
-# testlibs:
-# 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(UTESTC) -o $(UTESTO)
-# 	$(AR) $(ARFLAGS) $(UTESTA) $(UTESTO)
-# 	$(RM) $(RMFLAGS) $(UTESTO)
-
-# clean:
-# 	$(RM) $(RMFLAGS) $(MAIN)
-# 	$(RM) $(RMFLAGS) $(TEST)
-# 	$(RM) $(RMFLAGS) $(UTILSA)
-# 	$(RM) $(RMFLAGS) $(UTESTA)
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBS) $(MAINC) -o $(MAIN)
 
 clean:
 	$(RM) $(RMFLAGS) $(MAIN)
 	$(RM) $(RMFLAGS) $(MAINC)
-	$(RM) $(RMFLAGS) $(UTILSA)
+
+	$(RM) $(RMFLAGS) $(AARRAYS)
+	$(RM) $(RMFLAGS) $(AINTEGERS)

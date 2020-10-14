@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-#include "utils.h"
+#include "integers.h"
 
 //
 // Swap Example
 //
 int main() {
-  int x = 3;
+  int x = 42;
 
-  int y = 2;
+  int y = 69;
 
-  swap(&x, &y);
+  iswap(&x, &y);
 
   printf("%d\n", x);
 
