@@ -39,5 +39,9 @@ void iswap(int*, int*)
 int ssize(char *string)
 ```
 
+```
+void ssort(char *string, short int mode)
+```
+
 ### TODO
-- implement reverse string;
+-
