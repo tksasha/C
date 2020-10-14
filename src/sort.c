@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utils.h"
+#include "arrays.h"
 
 #define SIZE 10
 
@@ -15,7 +15,7 @@ int main() {
     array[i] = rand() % 100;
   }
 
-  sort(array, SIZE, ASC);
+  aisort(array, SIZE, ASC);
 
   printf("ASC\n");
 
@@ -23,7 +23,7 @@ int main() {
     printf("%d\n", array[i]);
   }
 
-  sort(array, SIZE, DESC);
+  aisort(array, SIZE, DESC);
 
   printf("DESC\n");
 

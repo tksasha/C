@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "utils.h"
+#include "arrays.h"
 
 #define SIZE 10
 
@@ -14,7 +14,7 @@ int main() {
     array[i] = i;
   }
 
-  printf("%d\n", max(array, SIZE));
+  printf("%d\n", aimax(array, SIZE));
 
   return 0;
 }
