@@ -29,5 +29,10 @@ void aisort(int *array, int size, short int mode)
 void iswap(int*, int*)
 ```
 
+### strings.h
+```
+int ssize(char *string)
+```
+
 ### TODO
 - implement reverse string;
