@@ -17,19 +17,23 @@ int main() {
 
   aisort(array, SIZE, ASC);
 
-  printf("ASC\n");
+  printf(" ASC: ");
 
   for(int i = 0; i < SIZE; i++) {
-    printf("%d\n", array[i]);
+    printf("%d ", array[i]);
   }
+
+  printf("\n");
 
   aisort(array, SIZE, DESC);
 
-  printf("DESC\n");
+  printf("DESC: ");
 
   for(int i = 0; i < SIZE; i++) {
-    printf("%d\n", array[i]);
+    printf("%d ", array[i]);
   }
+
+  printf("\n");
 
   return 0;
 }
