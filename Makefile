@@ -3,49 +3,37 @@ CFLAGS = -O0 -Wall
 
 INCLUDE = include
 
-FARRAYS = -larrays
-CARRAYS = src/arrays.c
-OARRAYS = src/arrays.o
-AARRAYS = lib/libarrays.a
+CLIBS = \
+	arrays \
+	chars \
+	integers \
+	strings \
 
-FINTEGERS = -lintegers
-CINTEGERS = src/integers.c
-OINTEGERS = src/integers.o
-AINTEGERS = lib/libintegers.a
-
-FSTRINGS = -lstrings
-CSTRINGS = src/strings.c
-OSTRINGS = src/strings.o
-ASTRINGS = lib/libstrings.a
-
-LIBS = -Llib $(FARRAYS) $(FINTEGERS) $(FSTRINGS)
+LFLAGS = -Llib $(foreach lib,$(CLIBS),-l$(lib))
 
 MAINC = src/main.c
 MAIN 	= bin/main
 
 AR = ar
-ARFLAGS = -cvq
+ARFLAGS = -cq
 
 RM = rm
 RMFLAGS = -f
 
+.PHONY: libs main
 all: libs main
 
 libs:
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CARRAYS)   -o $(OARRAYS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CINTEGERS) -o $(OINTEGERS)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $(CSTRINGS)  -o $(OSTRINGS)
-
-	$(AR) $(ARFLAGS) $(AARRAYS)   $(OARRAYS)
-	$(AR) $(ARFLAGS) $(AINTEGERS) $(OINTEGERS)
-	$(AR) $(ARFLAGS) $(ASTRINGS)  $(OSTRINGS)
-
-	$(RM) $(RMFLAGS) $(OARRAYS)
-	$(RM) $(RMFLAGS) $(OINTEGERS)
-	$(RM) $(RMFLAGS) $(OSTRINGS)
+	@for lib in $(CLIBS); do \
+		echo Compiling: lib/lib$$lib.a; \
+		$(CC) $(CFLAGS) -I$(INCLUDE) -c src/$$lib.c -o src/$$lib.o; \
+		$(AR) $(ARFLAGS) lib/lib$$lib.a src/$$lib.o; \
+		$(RM) $(RMFLAGS) src/$$lib.o; \
+	done;
 
 main:
-	$(CC) $(CFLAGS) -I$(INCLUDE) $(LIBS) $(MAINC) -o $(MAIN)
+	@echo Compiling: bin/main
+	@$(CC) $(CFLAGS) -I$(INCLUDE) $(LFLAGS) $(MAINC) -o $(MAIN)
 
 clean:
 	$(RM) $(RMFLAGS) $(MAIN)
