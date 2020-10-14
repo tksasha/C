@@ -1,8 +1,6 @@
 CC = clang
 CFLAGS = -O0 -Wall
 
-INCLUDE = include
-
 CLIBS = \
 	arrays \
 	chars \
@@ -26,14 +24,14 @@ all: libs main
 libs:
 	@for lib in $(CLIBS); do \
 		echo Compiling: lib/lib$$lib.a; \
-		$(CC) $(CFLAGS) -I$(INCLUDE) -c src/$$lib.c -o src/$$lib.o; \
+		$(CC) $(CFLAGS) -Iinclude -c src/$$lib.c -o src/$$lib.o; \
 		$(AR) $(ARFLAGS) lib/lib$$lib.a src/$$lib.o; \
 		$(RM) $(RMFLAGS) src/$$lib.o; \
 	done;
 
 main:
 	@echo Compiling: bin/main
-	@$(CC) $(CFLAGS) -I$(INCLUDE) $(LFLAGS) $(MAINC) -o $(MAIN)
+	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) $(MAINC) -o $(MAIN)
 
 clean:
 	$(RM) $(RMFLAGS) $(MAIN)

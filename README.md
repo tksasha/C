@@ -1,6 +1,6 @@
 ## How to build and run
 ```
-cd src
+cd src/
 ln -s FILE.c main.c
 cd ..
 make
