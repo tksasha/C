@@ -16,5 +16,5 @@ int main() {
 }
 
 float celsius(int fahrenheit) {
-  return (5 / 9.0) * (fahrenheit - 32);
+  return (5.0 / 9.0) * (fahrenheit - 32.0);
 }
