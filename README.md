@@ -1,4 +1,4 @@
-### How to build and run `src/main.c`:
+## How to build and run `src/main.c`:
 ```
 make
 bin/main
