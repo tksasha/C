@@ -1,5 +1,8 @@
-CC = clang
-CFLAGS = -O0 -Wall
+CC = clang -O0 -Wall
+AR = ar -cq
+RM = rm -f
+
+INCLUDE = -Iinclude
 
 CLIBS = \
 	arrays \
@@ -10,13 +13,7 @@ CLIBS = \
 LFLAGS = -Llib $(foreach lib,$(CLIBS),-l$(lib))
 
 MAINC = src/main.c
-MAIN 	= bin/main
-
-AR = ar
-ARFLAGS = -cq
-
-RM = rm
-RMFLAGS = -f
+MAIN  = bin/main
 
 .PHONY: libs main
 all: main
@@ -24,27 +21,27 @@ all: main
 libs:
 	@for lib in $(CLIBS); do \
 		echo Compiling: lib/lib$$lib.a; \
-		$(CC) $(CFLAGS) -Iinclude -c src/lib/$$lib.c -o tmp/$$lib.o; \
-		$(AR) $(ARFLAGS) lib/lib$$lib.a tmp/$$lib.o; \
-		$(RM) $(RMFLAGS) tmp/$$lib.o; \
+		$(CC) $(INCLUDE) -c src/lib/$$lib.c -o tmp/$$lib.o; \
+		$(AR) lib/lib$$lib.a tmp/$$lib.o; \
+		$(RM) tmp/$$lib.o; \
 	done;
 
 main:
 	@echo Compiling: $(MAIN)
-	@$(CC) $(CFLAGS) $(MAINC) -o $(MAIN)
+	@$(CC) $(MAINC) -o $(MAIN)
 
 clean:
-	$(RM) $(RMFLAGS) $(MAIN)
+	$(RM) $(MAIN)
 
 	@for file in $(wildcard lib/*.a); do \
-		echo $(RM) $(RMFLAGS) $$file; \
-		$(RM) $(RMFLAGS) $$file; \
+		echo $(RM) $$file; \
+		$(RM) $$file; \
 	done;
 
 src/%.c: libs
 	@echo "Compiling: $@ to $(MAIN)"
-	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) $@ -o $(MAIN)
+	@$(CC) $(INCLUDE) $(LFLAGS) $@ -o $(MAIN)
 
 kre/%.c:
 	@echo "Compiling: src/$@ to $(MAIN)"
-	@$(CC) $(CFLAGS) -Iinclude src/$@ -o $(MAIN)
+	@$(CC) $(INCLUDE) src/$@ -o $(MAIN)
