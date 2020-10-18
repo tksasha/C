@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+#define LOWER   0
+#define UPPER 300
+#define STEP   20
+
 float celsius(int fahrenheit);
 
 //
@@ -8,7 +12,7 @@ float celsius(int fahrenheit);
 int main() {
   printf("Fahrenheit Celsius\n");
 
-  for(int i = 0; i <= 300; i += 20) {
+  for(int i = LOWER; i <= UPPER; i += STEP) {
     printf("%10d %7.1f\n", i, celsius(i));
   }
 
