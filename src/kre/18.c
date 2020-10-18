@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 //
-// Exercise 1.8 from K&R Book
+// Exercise 1-8 from K&R Book
 //
 // Write a program to count blanks, tabs and newlines
 //
