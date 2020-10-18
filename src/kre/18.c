@@ -6,14 +6,13 @@
 // Write a program to count blanks, tabs and newlines
 //
 int main() {
-  int c = 0;
+  int chrt     = 0;
+  int blanks   = 0;
+  int tabs     = 0;
+  int newlines = 0;
 
-  long blanks   = 0;
-  long tabs     = 0;
-  long newlines = 0;
-
-  while((c = getchar()) != EOF) {
-    switch(c) {
+  while((chrt = getchar()) != EOF) {
+    switch(chrt) {
       case ' ':
         blanks++;
         break;
@@ -26,9 +25,9 @@ int main() {
     }
   }
 
-  printf("blanks  : %ld\n", blanks);
-  printf("tabs    : %ld\n", tabs);
-  printf("newlines: %ld\n", newlines);
+  printf("blanks  : %d\n", blanks);
+  printf("tabs    : %d\n", tabs);
+  printf("newlines: %d\n", newlines);
 
   return 0;
 }
