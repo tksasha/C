@@ -1,9 +1,12 @@
-## How to build and run
+## How to build and run `main.c`:
 ```
-cd src/
-ln -s FILE.c main.c
-cd ..
 make
+bin/main
+```
+
+## How to build and run exercises from K&R book:
+```
+make kre/EXERCISE.c
 bin/main
 ```
 

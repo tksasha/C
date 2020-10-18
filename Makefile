@@ -41,3 +41,7 @@ clean:
 		echo $(RM) $(RMFLAGS) $$file; \
 		$(RM) $(RMFLAGS) $$file; \
 	done;
+
+%.c:
+	@echo Compiling: $@ to bin/main
+	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) src/$@ -o $(MAIN)
