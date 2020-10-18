@@ -30,7 +30,7 @@ libs:
 	done;
 
 main:
-	@echo Compiling: bin/main
+	@echo Compiling: $(MAIN)
 	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) $(MAINC) -o $(MAIN)
 
 clean:
@@ -41,6 +41,10 @@ clean:
 		$(RM) $(RMFLAGS) $$file; \
 	done;
 
-%.c:
-	@echo Compiling: $@ to bin/main
-	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) src/$@ -o $(MAIN)
+src/%.c: libs
+	@echo "Compiling: $@ to $(MAIN)"
+	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) $@ -o $(MAIN)
+
+kre/%.c:
+	@echo "Compiling: src/$@ to $(MAIN)"
+	@$(CC) $(CFLAGS) -Iinclude src/$@ -o $(MAIN)

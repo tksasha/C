@@ -6,8 +6,7 @@ bin/main
 
 ## How to build and run `src/*.c`:
 ```
-make libs
-make FILE.c
+make src/FILE.c
 bin/main
 ```
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "chars.c"
+#include "chars.h"
 
 int main() {
   char a = 'a';
