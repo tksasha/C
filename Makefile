@@ -19,7 +19,7 @@ RM = rm
 RMFLAGS = -f
 
 .PHONY: libs main
-all: libs main
+all: main
 
 libs:
 	@for lib in $(CLIBS); do \
@@ -31,7 +31,7 @@ libs:
 
 main:
 	@echo Compiling: $(MAIN)
-	@$(CC) $(CFLAGS) -Iinclude $(LFLAGS) $(MAINC) -o $(MAIN)
+	@$(CC) $(CFLAGS) $(MAINC) -o $(MAIN)
 
 clean:
 	$(RM) $(RMFLAGS) $(MAIN)
