@@ -20,7 +20,7 @@ int main() {
   printf(" ASC: ");
 
   for(int i = 0; i < SIZE; i++) {
-    printf("%d ", array[i]);
+    printf("%2d ", array[i]);
   }
 
   printf("\n");
@@ -30,7 +30,7 @@ int main() {
   printf("DESC: ");
 
   for(int i = 0; i < SIZE; i++) {
-    printf("%d ", array[i]);
+    printf("%2d ", array[i]);
   }
 
   printf("\n");

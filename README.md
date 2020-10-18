@@ -1,6 +1,13 @@
-## How to build and run `main.c`:
+## How to build and run `src/main.c`:
 ```
 make
+bin/main
+```
+
+## How to build and run `src/*.c`:
+```
+make libs
+make FILE.c
 bin/main
 ```
 
