@@ -34,10 +34,10 @@ clean:
 		$(RM) $$file; \
 	done;
 
-src/%.c: libs
+src/ex/%.c: libs
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $(INCLUDE) $(LFLAGS) $@ -o $(MAIN)
 
-kre/%.c:
-	@echo "Compiling: src/$@ to $(MAIN)"
-	@$(CC) $(INCLUDE) src/$@ -o $(MAIN)
+src/kre/%.c: clean
+	@echo "Compiling: $@ to $(MAIN)"
+	@$(CC) $(INCLUDE) $@ -o $(MAIN)

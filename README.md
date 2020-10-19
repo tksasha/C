@@ -4,15 +4,15 @@ make
 bin/main
 ```
 
-## How to build and run `src/*.c`:
+## How to build and run `src/ex/*.c`:
 ```
-make src/FILE.c
+make src/ex/FILE.c
 bin/main
 ```
 
 ## How to build and run exercises from K&R book:
 ```
-make kre/EXERCISE.c
+make src/kre/EXERCISE.c
 bin/main
 ```
 
