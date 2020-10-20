@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+//
+// Exercise 1-6 from the K&R Book
+//
 int main() {
   int c;
 

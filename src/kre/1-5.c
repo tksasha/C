@@ -6,10 +6,13 @@
 
 float fahrenheit(int *celsius);
 
+//
+// Exercise 1-5 from the K&R Book
+//
 int main() {
   printf("Celsius Fahrenheit\n");
 
-  for(int i = LOWER; i <= UPPER; i += STEP) {
+  for(int i = UPPER; i >= LOWER; i -= STEP) {
     printf("%7d %10.2f\n", i, fahrenheit(&i));
   }
 

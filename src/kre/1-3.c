@@ -7,6 +7,8 @@
 float celsius(int fahrenheit);
 
 //
+// Exercise 1-3 from the K&R Book
+//
 // converts Fahrenheit degrees to Celsius degrees
 //
 int main() {
