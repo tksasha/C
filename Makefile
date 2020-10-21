@@ -23,7 +23,7 @@ libs:
 	done;
 
 main:
-	@echo Compiling: $(MAIN)
+	@echo Compiling: $(MAINC) to $(MAIN)
 	@$(CC) $(MAINC) -o $(MAIN)
 
 clean:

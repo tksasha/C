@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 //
 // Exercise 1-13 from the K&R Book.
 //
+
+bool isSeparator(int *chrt);
 
 void collect(int *sizes, int *max);
 
@@ -25,32 +28,46 @@ int main() {
   return 0;
 }
 
+bool isSeparator(int *chrt) {
+  switch(*chrt) {
+    case '\n':
+    case '\t':
+    case ' ' :
+    case ':' :
+    case '.' :
+    case ',' :
+    case '!' :
+    case '?' :
+      return true;
+      break;
+    default:
+      return false;
+  }
+}
+
 void collect(int *sizes, int *max) {
   int chrt = 0;
   int size = 0;
-  int flag = 0;
+
+  int isFirstSpace = false;
 
   while((chrt = getchar()) != EOF) {
-    switch(chrt) {
-      case '\t':
-      case '\n':
-      case ' ':
-        if(flag == 0) {
-          flag = 1;
+    if(isSeparator(&chrt)) {
+      if(isFirstSpace == false) {
+        isFirstSpace = true;
 
-          sizes[size]++;
+        sizes[size]++;
 
-          if(size > *max) {
-            *max = size;
-          }
-
-          size = 0;
+        if(size > *max) {
+          *max = size;
         }
-        break;
-      default:
-        flag = 0;
 
-        size++;
+        size = 0;
+      }
+    } else {
+      isFirstSpace = false;
+
+      size++;
     }
   }
 }
