@@ -1,85 +1,148 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include <ctype.h>
 
 //
-// Exercise 1-13 from the K&R Book.
+// Exercise 1-13 from the K&R Book
 //
 
-bool isSeparator(int *chrt);
+#define SIZE 10
 
-void collect(int *sizes, int *max);
+void nullify(int*);
 
-void display(int *sizes, int *max);
+void increment(int*, int);
+
+void collect(int*);
+
+void inspect(int*);
+
+void horizontal(int*);
+
+void vertical(int*);
+
+int maximum(int*);
 
 int main() {
-  int max  = 0;
+  int sizes[SIZE];
 
-  int *sizes;
+  nullify(sizes);
 
-  if((sizes = malloc(sizeof(int))) == NULL) {
-    return -1;
-  }
+  collect(sizes);
 
-  collect(sizes, &max);
+  inspect(sizes);
 
-  display(sizes, &max);
+  printf("\nHorizontal:\n");
+
+  horizontal(sizes);
+
+  printf("\nVertical:\n");
+
+  vertical(sizes);
 
   return 0;
 }
 
-bool isSeparator(int *chrt) {
-  switch(*chrt) {
-    case '\n':
-    case '\t':
-    case ' ' :
-    case ':' :
-    case '.' :
-    case ',' :
-    case '!' :
-    case '?' :
-      return true;
-      break;
-    default:
-      return false;
+void nullify(int *array) {
+  for(int i = 0; i < SIZE; i++) {
+    array[i] = 0;
   }
 }
 
-void collect(int *sizes, int *max) {
-  int chrt = 0;
+void collect(int *array) {
+  int c;
+
   int size = 0;
 
-  int isFirstSpace = false;
-
-  while((chrt = getchar()) != EOF) {
-    if(isSeparator(&chrt)) {
-      if(isFirstSpace == false) {
-        isFirstSpace = true;
-
-        sizes[size]++;
-
-        if(size > *max) {
-          *max = size;
-        }
-
-        size = 0;
-      }
-    } else {
-      isFirstSpace = false;
-
+  while((c = getchar()) != EOF) {
+    if(isalnum(c)) {
       size++;
+    } else {
+      increment(array, size);
+
+      size = 0;
     }
   }
 }
 
-void display(int *sizes, int *max) {
-  for(int i = *max; i >= 1; i--) {
-    printf("%d: ", i);
+void increment(int *array, int idx) {
+  if(idx < SIZE) {
+    array[idx - 1]++;
+  } else {
+    array[SIZE - 1]++;
+  }
+}
 
-    for(int j = 1; j <= sizes[i]; j++) {
-      printf("*");
+void inspect(int *array) {
+  printf("[ \n");
+
+  for(int i = 0; i < SIZE; i++) {
+    printf("\t{ size: ");
+
+    if(i != (SIZE - 1)) {
+      printf("%4d", (i + 1));
+    } else {
+      printf(">=10");
+    }
+
+    printf(", count: %2d }\n", array[i]);
+  }
+
+  printf("]\n");
+}
+
+void horizontal(int *array) {
+  for(int i = (SIZE - 1); i >= 0; i--) {
+    if(i == (SIZE - 1)) {
+      printf(">=10: ");
+    } else {
+      printf("%4d: ", (i + 1));
+    }
+
+    for(int j = 0; j < array[i]; j++) {
+      printf("#");
     }
 
     printf("\n");
   }
+}
+
+void vertical(int *array) {
+  int max = maximum(array);
+
+  for(int i = max; i > 0; i--) {
+    printf("%d: ", i);
+
+    for(int j = 0; j < SIZE; j++) {
+      if(array[j] >= i) {
+        printf("# ");
+      } else {
+        printf("  ");
+      }
+    }
+
+    printf("\n");
+  }
+
+  printf("  ");
+
+  for(int i = 0; i < SIZE; i++) {
+    if(i == (SIZE - 1)) {
+      printf(" >=10");
+    } else {
+      printf(" %d", (i + 1));
+    }
+  }
+
+  printf("\n");
+}
+
+int maximum(int *array) {
+  int max = array[0];
+
+  for(int i = 0; i < SIZE; i++) {
+    if(array[i] > max) {
+      max = array[i];
+    }
+  }
+
+  return max;
 }
