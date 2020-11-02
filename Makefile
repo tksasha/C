@@ -1,4 +1,4 @@
-CC = clang -O0 -Wall
+CC = clang -O0 -Wall -std=gnu11
 AR = ar -cq
 RM = rm -f
 
