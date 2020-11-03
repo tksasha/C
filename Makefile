@@ -22,9 +22,9 @@ libs:
 		$(RM) tmp/$$lib.o; \
 	done;
 
-main:
+main: libs
 	@echo Compiling: $(MAINC) to $(MAIN)
-	@$(CC) $(MAINC) -o $(MAIN)
+	@$(CC) $(MAINC) $(INCLUDE) $(LFLAGS) -o $(MAIN)
 
 clean:
 	$(RM) $(MAIN)
@@ -41,3 +41,19 @@ src/ex/%.c: libs
 src/kre/%.c: clean
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $(INCLUDE) $@ -o $(MAIN)
+
+libchars.a:
+	@echo Compiling: src/lib/chars.c to lib/libchars.a
+	@$(CC) $(INCLUDE) -c src/lib/chars.c -o tmp/chars.o
+	@$(AR) lib/libchars.a tmp/chars.o
+	@$(RM) tmp/chars.o
+
+libstrings.a:
+	@echo Compiling: src/lib/strings.c to lib/libstrings.a
+	@$(CC) $(INCLUDE) -c src/lib/strings.c -o tmp/strings.o
+	@$(AR) lib/libstrings.a tmp/strings.o
+	@$(RM) tmp/strings.o
+
+src/kre/1-18.c: libchars.a libstrings.a
+	@echo "Compiling: $@ to $(MAIN)"
+	@$(CC) $(INCLUDE) -Llib -lchars -lstrings $@ -o $(MAIN)
