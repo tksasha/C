@@ -22,9 +22,9 @@ libs:
 		$(RM) tmp/$$lib.o; \
 	done;
 
-main: libs
+main:
 	@echo Compiling: $(MAINC) to $(MAIN)
-	@$(CC) $(MAINC) $(INCLUDE) $(LFLAGS) -o $(MAIN)
+	@$(CC) $(MAINC) -o $(MAIN)
 
 clean:
 	$(RM) $(MAIN)
