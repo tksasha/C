@@ -5,7 +5,7 @@
 #include "chars.h"
 #include "strings.h"
 
-int ssize(char *string) {
+int strings_size(char *string) {
   int size = 0;
 
   while(*string != '\0') {
@@ -17,8 +17,8 @@ int ssize(char *string) {
   return size;
 }
 
-void ssort(char *string, short int mode) {
-  int size = ssize(string);
+void strings_sort(char *string, short int mode) {
+  int size = strings_size(string);
 
   for(int i = 0; i < size; i++) {
     for(int j = 0; j < size; j++) {
@@ -47,8 +47,8 @@ void strings_append(char *string, char character, size_t size) {
   }
 }
 
-void sreverse(char *string) {
-  int size = ssize(string);
+void strings_reverse(char *string) {
+  int size = strings_size(string);
 
   for(int i = 0; i < (size / 2); i++) {
     int j = size - i - 1;

@@ -57,3 +57,7 @@ libstrings.a:
 src/kre/1-18.c: libchars.a libstrings.a
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $(INCLUDE) -Llib -lchars -lstrings $@ -o $(MAIN)
+
+src/kre/1-19.c: libchars.a libstrings.a
+	@echo "Compiling: $@ to $(MAIN)"
+	@$(CC) $(INCLUDE) -Llib -lchars -lstrings $@ -o $(MAIN)
