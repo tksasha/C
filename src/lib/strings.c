@@ -42,3 +42,13 @@ void sappend(char *string, char character, int size) {
     }
   }
 }
+
+void sreverse(char *string) {
+  int size = ssize(string);
+
+  for(int i = 0; i < (size / 2); i++) {
+    int j = size - i - 1;
+
+    cswap(&string[i], &string[j]);
+  }
+}
