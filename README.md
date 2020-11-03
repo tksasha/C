@@ -43,18 +43,7 @@ void cswap(char*, char*)
 void iswap(int*, int*)
 ```
 
-### strings.h
-```
-int ssize(char *string)
-
-void ssort(char *string, short int mode)
-
-void strings_append(char *string, char character, size_t size);
-
-void strings_nullify(char *string, size_t size);
-
-void strings_rstrip(char *string);
-```
+[strings.h](https://github.com/tksasha/c/blob/main/include/strings.h)
 
 ### TODO
 -
