@@ -30,3 +30,15 @@ void ssort(char *string, short int mode) {
     }
   }
 }
+
+void sappend(char *string, char character, int length) {
+  for(int i = 0; i < length; i++) {
+    if((string[i] == '\0') && (i < length - 1)) {
+      string[i] = character;
+
+      string[i + 1] = '\0';
+
+      return;
+    }
+  }
+}
