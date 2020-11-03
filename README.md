@@ -23,25 +23,11 @@ make clean
 
 ## API
 
-### arrays.h
-```
-int aimax(int *array, int size)
-```
+[arrays.h](https://github.com/tksasha/c/blob/main/include/arrays.h)
 
-```
-void aisort(int *array, int size, short int mode)
-```
+[chars.h](https://github.com/tksasha/c/blob/main/include/chars.h)
 
-### chars.h
-```
-void cswap(char*, char*)
-```
-
-### integers.h
-
-```
-void iswap(int*, int*)
-```
+[integers.h](https://github.com/tksasha/c/blob/main/include/integers.h)
 
 [strings.h](https://github.com/tksasha/c/blob/main/include/strings.h)
 
