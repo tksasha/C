@@ -1,4 +1,4 @@
-void cswap(char *a, char *b) {
+void chars_swap(char *a, char *b) {
   *a = *a ^ *b;
 
   *b = *a ^ *b;

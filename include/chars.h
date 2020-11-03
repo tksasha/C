@@ -1,1 +1,1 @@
-void cswap(char*, char*);
+void chars_swap(char *a, char *b);

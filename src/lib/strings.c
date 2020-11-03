@@ -24,11 +24,11 @@ void strings_sort(char *string, short int mode) {
     for(int j = 0; j < size; j++) {
       if(mode == DESC) {
         if(string[i] > string[j]) {
-          cswap(&string[i], &string[j]);
+          chars_swap(&string[i], &string[j]);
         }
       } else {
         if(string[j] > string[i]) {
-          cswap(&string[i], &string[j]);
+          chars_swap(&string[i], &string[j]);
         }
       }
     }
@@ -53,7 +53,7 @@ void strings_reverse(char *string) {
   for(int i = 0; i < (size / 2); i++) {
     int j = size - i - 1;
 
-    cswap(&string[i], &string[j]);
+    chars_swap(&string[i], &string[j]);
   }
 }
 
