@@ -5,7 +5,7 @@
 
 #define SPACE   ' '
 #define TAB     '\t'
-#define TABSTOP   2
+#define TABSTOP   4
 
 int strings_size(char *string);
 
@@ -22,3 +22,5 @@ void strings_nullify(char *string, size_t size);
 void strings_rstrip(char *string);
 
 void strings_entab(char *string, size_t size);
+
+void strings_detab(char *string, size_t size);

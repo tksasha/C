@@ -36,8 +36,8 @@ void strings_sort(char *string, short int mode) {
 }
 
 void strings_append(char *string, char character, size_t size) {
-  for(int i = 0; i < size; i++) {
-    if((string[i] == '\0') && (i < size - 1)) {
+  for(int i = 0; i < size - 1; i++) {
+    if(string[i] == '\0') {
       string[i] = character;
 
       string[i + 1] = '\0';
@@ -118,6 +118,26 @@ void strings_entab(char *string, size_t size) {
         spaces--;
       }
 
+      strings_append(temp, string[i], size);
+    }
+  }
+
+  strings_nullify(string, size);
+
+  strings_copy(temp, string, size);
+}
+
+void strings_detab(char *string, size_t size) {
+  char temp[size];
+
+  strings_nullify(temp, size);
+
+  for(int i = 0; string[i] != '\0'; i++) {
+    if(string[i] == TAB) {
+      for(int j = 0; j < TABSTOP; j++) {
+        strings_append(temp, SPACE, size);
+      }
+    } else {
       strings_append(temp, string[i], size);
     }
   }
