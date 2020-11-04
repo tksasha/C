@@ -57,16 +57,14 @@ void strings_reverse(char *string) {
   }
 }
 
-void scopy(char *src, char *dst, size_t dstsize) {
-  for(int i = 0; i < dstsize; i++) {
-    printf("i: %c\n", src[i]);
-
+void strings_copy(char *src, char *dst, size_t dstsize) {
+  for(int i = 0; i < dstsize - 1; i++) {
     if(src[i] != '\0') {
       dst[i] = src[i];
     }
   }
 
-  dst[dstsize] = '\0';
+  dst[dstsize - 1] = '\0';
 }
 
 void strings_nullify(char *string, size_t size) {
@@ -97,4 +95,34 @@ void strings_rstrip(char *string) {
   if(is_space) {
     string[space_idx] = '\0';
   }
+}
+
+void strings_entab(char *string, size_t size) {
+  char temp[size];
+
+  int spaces = 0;
+
+  for(int i = 0; string[i] != '\0'; i++) {
+    if(string[i] == SPACE) {
+      spaces++;
+
+      if(spaces == TABSTOP) {
+        strings_append(temp, TAB, size);
+
+        spaces = 0;
+      }
+    } else {
+      while(spaces > 0) {
+        strings_append(temp, SPACE, size);
+
+        spaces--;
+      }
+
+      strings_append(temp, string[i], size);
+    }
+  }
+
+  strings_nullify(string, size);
+
+  strings_copy(temp, string, size);
 }
