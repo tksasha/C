@@ -34,13 +34,9 @@ clean:
 		$(RM) $$file; \
 	done;
 
-src/ex/%.c: libs
+src/%.c: libs
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $(INCLUDE) $(LFLAGS) $@ -o $(MAIN)
-
-src/kre/%.c: clean
-	@echo "Compiling: $@ to $(MAIN)"
-	@$(CC) $(INCLUDE) $@ -o $(MAIN)
 
 libchars.a:
 	@echo Compiling: src/lib/chars.c to lib/libchars.a
