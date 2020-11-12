@@ -23,7 +23,7 @@ make clean
 
 ## API
 
-[arrays.h](https://github.com/tksasha/c/blob/main/include/arrays.h)
+[array.h](https://github.com/tksasha/c/blob/main/include/array.h)
 
 [chars.h](https://github.com/tksasha/c/blob/main/include/chars.h)
 

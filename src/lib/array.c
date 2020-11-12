@@ -1,7 +1,9 @@
-#include "arrays.h"
+#include <stdio.h>
+
+#include "array.h"
 #include "integers.h"
 
-int aimax(int *array, int size) {
+int array_max(int *array, size_t size) {
   int max = array[0];
 
   for(int i = 0; i < size; i++) {
@@ -13,7 +15,7 @@ int aimax(int *array, int size) {
   return max;
 }
 
-void aisort(int *array, int size, short int mode) {
+void array_sort(int *array, size_t size, short int mode) {
   for(int i = 0; i < size; i++) {
     for(int j = 0; j < size; j++) {
       if(mode == DESC) {
