@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 #include "char.h"
-#include "strings.h"
+#include "string.h"
 
-int strings_size(char *string) {
+int string_size(char *string) {
   int size = 0;
 
   while(*string != '\0') {
@@ -17,25 +17,25 @@ int strings_size(char *string) {
   return size;
 }
 
-void strings_sort(char *string, short int mode) {
-  int size = strings_size(string);
+void string_sort(char *string, short int mode) {
+  int size = string_size(string);
 
   for(int i = 0; i < size; i++) {
     for(int j = 0; j < size; j++) {
       if(mode == DESC) {
         if(string[i] > string[j]) {
-          chars_swap(&string[i], &string[j]);
+          char_swap(&string[i], &string[j]);
         }
       } else {
         if(string[j] > string[i]) {
-          chars_swap(&string[i], &string[j]);
+          char_swap(&string[i], &string[j]);
         }
       }
     }
   }
 }
 
-void strings_append(char *string, char character, size_t size) {
+void string_append(char *string, char character, size_t size) {
   for(int i = 0; i < size - 1; i++) {
     if(string[i] == '\0') {
       string[i] = character;
@@ -47,17 +47,17 @@ void strings_append(char *string, char character, size_t size) {
   }
 }
 
-void strings_reverse(char *string) {
-  int size = strings_size(string);
+void string_reverse(char *string) {
+  int size = string_size(string);
 
   for(int i = 0; i < (size / 2); i++) {
     int j = size - i - 1;
 
-    chars_swap(&string[i], &string[j]);
+    char_swap(&string[i], &string[j]);
   }
 }
 
-void strings_copy(char *src, char *dst, size_t dstsize) {
+void string_copy(char *src, char *dst, size_t dstsize) {
   for(int i = 0; i < dstsize - 1; i++) {
     if(src[i] != '\0') {
       dst[i] = src[i];
@@ -67,13 +67,13 @@ void strings_copy(char *src, char *dst, size_t dstsize) {
   dst[dstsize - 1] = '\0';
 }
 
-void strings_nullify(char *string, size_t size) {
+void string_nullify(char *string, size_t size) {
   for(int i = 0; i < size; i++) {
     string[i] = '\0';
   }
 }
 
-void strings_rstrip(char *string) {
+void string_rstrip(char *string) {
   bool is_space = false;
 
   int space_idx = 0;
@@ -97,7 +97,7 @@ void strings_rstrip(char *string) {
   }
 }
 
-void strings_entab(char *string, size_t size) {
+void string_entab(char *string, size_t size) {
   char temp[size];
 
   int spaces = 0;
@@ -107,42 +107,42 @@ void strings_entab(char *string, size_t size) {
       spaces++;
 
       if(spaces == TABSTOP) {
-        strings_append(temp, TAB, size);
+        string_append(temp, TAB, size);
 
         spaces = 0;
       }
     } else {
       while(spaces > 0) {
-        strings_append(temp, SPACE, size);
+        string_append(temp, SPACE, size);
 
         spaces--;
       }
 
-      strings_append(temp, string[i], size);
+      string_append(temp, string[i], size);
     }
   }
 
-  strings_nullify(string, size);
+  string_nullify(string, size);
 
-  strings_copy(temp, string, size);
+  string_copy(temp, string, size);
 }
 
-void strings_detab(char *string, size_t size) {
+void string_detab(char *string, size_t size) {
   char temp[size];
 
-  strings_nullify(temp, size);
+  string_nullify(temp, size);
 
   for(int i = 0; string[i] != '\0'; i++) {
     if(string[i] == TAB) {
       for(int j = 0; j < TABSTOP; j++) {
-        strings_append(temp, SPACE, size);
+        string_append(temp, SPACE, size);
       }
     } else {
-      strings_append(temp, string[i], size);
+      string_append(temp, string[i], size);
     }
   }
 
-  strings_nullify(string, size);
+  string_nullify(string, size);
 
-  strings_copy(temp, string, size);
+  string_copy(temp, string, size);
 }
