@@ -4,7 +4,7 @@ RM = rm -f
 
 INCLUDE = -Iinclude
 
-CLIBS = arrays chars integers strings
+CLIBS = array char integer string
 
 LFLAGS = -Llib $(foreach lib,$(CLIBS),-l$(lib))
 
