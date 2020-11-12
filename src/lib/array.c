@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "array.h"
-#include "integers.h"
+#include "integer.h"
 
 int array_max(int *array, size_t size) {
   int max = array[0];
@@ -20,11 +20,11 @@ void array_sort(int *array, size_t size, short int mode) {
     for(int j = 0; j < size; j++) {
       if(mode == DESC) {
         if(array[i] > array[j]) {
-          iswap(&array[i], &array[j]);
+          integer_swap(&array[i], &array[j]);
         }
       } else {
         if(array[i] < array[j]) {
-          iswap(&array[i], &array[j]);
+          integer_swap(&array[i], &array[j]);
         }
       }
     }
