@@ -42,3 +42,13 @@ int array_shift(int *array, size_t size) {
 
   return result;
 }
+
+void array_unshift(int *array, int el, size_t size) {
+  for(int i = size - 1; i >= 0; i--) {
+    if(i == 0) {
+      array[i] = el;
+    } else {
+      array[i] = array[i - 1];
+    }
+  }
+}
