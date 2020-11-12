@@ -30,3 +30,15 @@ void array_sort(int *array, size_t size, short int mode) {
     }
   }
 }
+
+int array_shift(int *array, size_t size) {
+  int result = array[0];
+
+  for(int i = 0; i < size - 1; i++) {
+    array[i] = array[i + 1];
+  }
+
+  array[size - 1] = 0;
+
+  return result;
+}
