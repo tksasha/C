@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "chars.h"
+#include "char.h"
 #include "strings.h"
 
 int strings_size(char *string) {
