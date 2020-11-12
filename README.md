@@ -25,11 +25,11 @@ make clean
 
 [array.h](https://github.com/tksasha/c/blob/main/include/array.h)
 
-[chars.h](https://github.com/tksasha/c/blob/main/include/chars.h)
+[char.h](https://github.com/tksasha/c/blob/main/include/char.h)
 
-[integers.h](https://github.com/tksasha/c/blob/main/include/integers.h)
+[integer.h](https://github.com/tksasha/c/blob/main/include/integer.h)
 
-[strings.h](https://github.com/tksasha/c/blob/main/include/strings.h)
+[string.h](https://github.com/tksasha/c/blob/main/include/string.h)
 
 ### TODO
 -
