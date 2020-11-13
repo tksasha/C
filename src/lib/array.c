@@ -52,3 +52,17 @@ void array_unshift(int *array, int el, size_t size) {
     }
   }
 }
+
+void array_inspect(int *array, size_t size) {
+  putchar('[');
+
+  for(int i = 0; i < size; i++) {
+    printf("%d", array[i]);
+
+    if(i < size - 1) {
+      printf(", ");
+    }
+  }
+
+  printf("]\n");
+}
