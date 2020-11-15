@@ -32,4 +32,6 @@ make clean
 [string.h](https://github.com/tksasha/c/blob/main/include/string.h)
 
 ### TODO
--
+- Implement Exercise 1-22;
+- Implement Exercise 1-23;
+- Implement Exercise 1-24;
