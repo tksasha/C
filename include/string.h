@@ -24,3 +24,7 @@ void string_rstrip(char *string);
 void string_entab(char *string, size_t size);
 
 void string_detab(char *string, size_t size);
+
+void string_only_letters(char str[]);
+
+void string_downcase(char str[]);
