@@ -146,3 +146,23 @@ void string_detab(char *string, size_t size) {
 
   string_copy(temp, string, size);
 }
+
+void string_only_letters(char str[]) {
+  int j = 0;
+
+  for(int i = 0; str[i] != '\0'; i++) {
+    if(char_is_letter(str[i])) {
+      str[j++] = str[i];
+    }
+  }
+
+  str[j] = '\0';
+}
+
+void string_downcase(char str[]) {
+  for(int i = 0; str[i] != '\0'; i++) {
+    if(char_is_letter(str[i]) && char_is_uppercase(str[i])) {
+      str[i] = char_downcase(str[i]);
+    }
+  }
+}
