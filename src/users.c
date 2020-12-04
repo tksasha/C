@@ -59,14 +59,14 @@ void UserInspect(User * user) {
 }
 
 User * UserNew(char name[], int age) {
-  User * pu = malloc(sizeof(*pu));
+  User * puser = malloc(sizeof(*puser));
 
-  if(pu) {
-    strlcpy(pu->name, name, sizeof(pu->name));
+  if(puser) {
+    strlcpy(puser->name, name, sizeof(puser->name));
 
-    pu->age = age;
+    puser->age = age;
 
-    return pu;
+    return puser;
   } else {
     return NULL;
   }
