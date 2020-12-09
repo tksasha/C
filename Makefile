@@ -1,4 +1,13 @@
-CC = clang -O0 -Wall -std=gnu11
+CC = \
+	clang \
+		-Wall \
+		-Wextra  \
+		-Wmissing-prototypes \
+		-Wstrict-prototypes \
+		-Wold-style-definition \
+		-pedantic \
+		# -Weverything
+
 AR = ar -cq
 RM = rm -f
 
