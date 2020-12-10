@@ -20,7 +20,7 @@ LFLAGS = -Llib $(foreach lib,$(CLIBS),-l$(lib))
 MAINC = src/main.c
 MAIN  = bin/main
 
-.PHONY: libs main src/*.c
+.PHONY: libs main src/**/*.c
 all: main
 
 libs:
@@ -47,6 +47,6 @@ src/ex/%.c: libs
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $(INCLUDE) $(LFLAGS) $@ -o $(MAIN)
 
-src/*.c:
+src/**/*.c:
 	@echo "Compiling: $@ to $(MAIN)"
 	@$(CC) $@ -o $(MAIN)
